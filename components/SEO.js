@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
 export default function SEO({
-    title = "Priyanshu Kumar - Computational Structural Biology | Network Science | Research",
-    description = "Biotechnology undergraduate with research focus on computational structural biology and network science. First-author bioRxiv publication on AlphaFold structure evaluation methodology, analyzing 145,000+ protein structures with machine learning approaches.",
-    canonical = "https://mrrajat1809.github.io/priyanshu_portfolio",
-    ogImage = "https://mrrajat1809.github.io/priyanshu_portfolio/images/og-image.jpg",
+    title = "Dr. Swatantar Kumar - Microbial Biogeochemist | Environmental Microbiology | Research",
+    description = "Assistant Professor with PhD from Germany and Postdoc from USA. Research focus on microbial nitrogen cycling, anammox processes, and biogeochemistry in pristine groundwater ecosystems. 10+ peer-reviewed publications in microbial ecology and environmental microbiology.",
+    canonical = "https://mrrajat1809.github.io/swatantar_portfolio",
+    ogImage = "https://mrrajat1809.github.io/swatantar_portfolio/images/og-image.jpg",
     ogType = "website",
     twitterCard = "summary_large_image",
     structuredData,
@@ -12,41 +12,51 @@ export default function SEO({
     const defaultStructuredData = {
         "@context": "https://schema.org",
         "@type": "Person",
-        name: "Priyanshu Kumar",
-        jobTitle: "Computational Biology Researcher",
+        name: "Dr. Swatantar Kumar",
+        jobTitle: "Assistant Professor - Microbial Biogeochemist",
         description: description,
         url: canonical,
         image: ogImage,
         sameAs: [
-            "https://github.com/MrRajat1809",
-            "https://linkedin.com/in/priyanshu-kumar1809",
-            "https://mrrajat1809.github.io/priyanshu_portfolio",
-            "https://orcid.org/0009-0004-1576-027X"
+            "https://www.linkedin.com/in/dr-swatantar-kumar-0864251aa",
+            "https://orcid.org/0000-0002-9057-9911",
+            "https://www.scopus.com/authid/detail.uri?authorId=57196019343",
+            "https://mrrajat1809.github.io/swatantar_portfolio"
         ],
         affiliation: {
             "@type": "Organization",
             name: "Chandigarh University",
             url: "https://www.cuchd.in/"
         },
-        alumniOf: {
-            "@type": "Organization",
-            name: "Chandigarh University"
-        },
+        alumniOf: [
+            {
+                "@type": "Organization",
+                name: "Friedrich Schiller University Jena",
+                address: "Jena, Germany"
+            },
+            {
+                "@type": "Organization",
+                name: "M.M. University",
+                address: "Ambala, India"
+            }
+        ],
         knowsAbout: [
-            "Computational Biology",
-            "Network Science",
-            "Stochastic Modeling",
-            "Protein Structure Prediction",
-            "AlphaFold",
-            "Structural Biology",
-            "Machine Learning",
-            "Small-World Networks",
-            "Markov Processes",
-            "Bioinformatics",
-            "Data-Driven Research"
+            "Microbial Biogeochemistry",
+            "Environmental Microbiology",
+            "Nitrogen Cycle",
+            "Anammox Bacteria",
+            "Denitrification",
+            "Groundwater Microbiology",
+            "Stable Isotope Tracing",
+            "Rhizosphere Chemistry",
+            "Priming Effects",
+            "Metabolomics",
+            "FTICR-MS",
+            "Biogeochemical Cycles"
         ],
         award: [
-            "Tech Invent 2024 - Second Place"
+            "Max Planck Graduate Research Fellow (IMPRS-gBGC)",
+            "JSMC fellow (LIFE)"
         ]
     };
 
@@ -58,7 +68,7 @@ export default function SEO({
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
             <meta name="robots" content="index, follow" />
             <meta name="language" content="en" />
-            <meta name="author" content="Priyanshu Kumar" />
+            <meta name="author" content="Dr. Swatantar Kumar" />
 
             {/* Canonical URL */}
             <link rel="canonical" href={canonical} />
@@ -69,7 +79,7 @@ export default function SEO({
             <meta property="og:description" content={description} />
             <meta property="og:image" content={ogImage} />
             <meta property="og:url" content={canonical} />
-            <meta property="og:site_name" content="Priyanshu Kumar - Portfolio" />
+            <meta property="og:site_name" content="Dr. Swatantar Kumar - Portfolio" />
             <meta property="og:locale" content="en_US" />
 
             {/* Twitter */}
@@ -77,10 +87,10 @@ export default function SEO({
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={ogImage} />
-            <meta name="twitter:creator" content="@priyanshu_kumar" />
+            <meta name="twitter:creator" content="@sawi_mpi" />
 
             {/* Additional Meta Tags */}
-            <meta name="keywords" content="computational biology, network science, stochastic modeling, protein structure prediction, AlphaFold, AF2Rank, structural biology, bioinformatics, machine learning, small-world networks, Markov processes, research, Priyanshu Kumar, Rosetta, bioRxiv" />
+            <meta name="keywords" content="microbial biogeochemistry, environmental microbiology, nitrogen cycle, anammox, denitrification, groundwater microbiology, stable isotope tracing, rhizosphere chemistry, priming effects, metabolomics, FTICR-MS, PNNL, Friedrich Schiller University, Max Planck, Dr. Swatantar Kumar, biogeochemical cycles, chemolithoautotrophy" />
             <meta name="theme-color" content="#3b82f6" />
             <meta name="msapplication-TileColor" content="#3b82f6" />
 

@@ -7,8 +7,8 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/priyanshu_portfolio' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/priyanshu_portfolio/' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/swatantar_portfolio' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/swatantar_portfolio/' : '',
   
   // GitHub Pages specific configuration
   exportPathMap: async function (

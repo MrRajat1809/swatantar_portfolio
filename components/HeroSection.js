@@ -5,7 +5,7 @@ import { ArrowDown, Download, Github, Linkedin, Mail, ExternalLink } from 'lucid
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-const basePath = process.env.NODE_ENV === 'production' ? '/priyanshu_portfolio' : '';
+const basePath = process.env.NODE_ENV === 'production' ? '/swatantar_portfolio' : '';
 
 export default function HeroSection() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -44,15 +44,15 @@ export default function HeroSection() {
     };
 
     const stats = [
-        { value: "8.13/10", label: "Academic CGPA", color: "from-blue-500 to-blue-600" },
-        { value: "145,000+", label: "Protein Structures Analyzed", color: "from-purple-500 to-purple-600" },
-        { value: "First Author", label: "bioRxiv Publication", color: "from-pink-500 to-pink-600" }
+        { value: "PhD", label: "Germany (2014-2018)", color: "from-blue-500 to-blue-600" },
+        { value: "15+", label: "Peer-Reviewed Publications", color: "from-purple-500 to-purple-600" },
+        { value: "PNNL", label: "Postdoc, USA (2018-2020)", color: "from-pink-500 to-pink-600" }
     ];
 
     const socialLinks = [
         { icon: Github, href: "https://github.com/MrRajat1809", label: "GitHub" },
-        { icon: Linkedin, href: "https://linkedin.com/in/priyanshu-kumar1809", label: "LinkedIn" },
-        { icon: ExternalLink, href: "https://mrrajat1809.github.io/priyanshu_portfolio", label: "Portfolio" }
+        { icon: Linkedin, href: "https://www.linkedin.com/in/dr-swatantar-kumar-0864251aa", label: "LinkedIn" },
+        { icon: ExternalLink, href: "https://orcid.org/0000-0002-9057-9911", label: "ORCID" }
     ];
 
     return (
@@ -101,7 +101,7 @@ export default function HeroSection() {
                         />
                         <Image
                             src={`${basePath}/images/profile.jpg`}
-                            alt="Priyanshu Kumar"
+                            alt="Dr. Swatantar Kumar"
                             width={140}
                             height={140}
                             className="relative rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-xl"
@@ -114,23 +114,23 @@ export default function HeroSection() {
                     variants={itemVariants}
                     className="text-4xl md:text-6xl font-bold mb-4"
                 >
-                    <span className="gradient-text">Priyanshu Kumar</span>
+                    <span className="gradient-text">Dr. Swatantar Kumar</span>
                 </motion.h1>
 
                 <motion.p
                     variants={itemVariants}
                     className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-3"
                 >
-                    Computational Structural Biology | Network Science | Stochastic Modeling
+                    Microbial Biogeochemist | Environmental Microbiology | Nitrogen Cycle Research
                 </motion.p>
 
                 <motion.p
                     variants={itemVariants}
                     className="text-base md:text-lg text-gray-500 dark:text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed px-4"
                 >
-                    Second-year Biotechnology undergraduate at Chandigarh University developing reproducible
-                    computational frameworks for protein structure evaluation and network analysis. Research
-                    focus on integrating machine learning with physics-based modeling for structural biology applications.
+                    Assistant Professor at Chandigarh University | PhD from Friedrich Schiller University, Germany (Max Planck Fellow) |
+                    Postdoctoral Researcher at Pacific Northwest National Laboratory, USA | Specializing in microbial
+                    nitrogen cycling and biogeochemical processes in pristine groundwater ecosystems
                 </motion.p>
 
                 {/* Stats */}
@@ -162,7 +162,7 @@ export default function HeroSection() {
                     <motion.a
                         whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)" }}
                         whileTap={{ scale: 0.95 }}
-                        href="mailto:rkp6055@gmail.com"
+                        href="mailto:kumar.swatantar2020@gmail.com"
                         className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl text-sm md:text-base"
                     >
                         <Mail size={18} />

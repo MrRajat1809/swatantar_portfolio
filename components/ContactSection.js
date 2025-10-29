@@ -35,50 +35,50 @@ export default function ContactSection() {
         {
             id: 'email',
             label: 'Email',
-            value: 'rkp6055@gmail.com',
+            value: 'kumar.swatantar2020@gmail.com',
             icon: Mail,
             color: 'from-blue-500 to-blue-600',
-            href: 'mailto:rkp6055@gmail.com',
+            href: 'mailto:kumar.swatantar2020@gmail.com',
             description: 'For research inquiries and collaboration',
             copyable: true
         },
         {
             id: 'phone',
             label: 'Phone',
-            value: '+91 7632066862',
+            value: '+91 7807631254',
             icon: Phone,
             color: 'from-green-500 to-green-600',
-            href: 'tel:+917632066862',
+            href: 'tel:+917807631254',
             description: 'Available during business hours (IST)',
             copyable: true
         },
         {
             id: 'linkedin',
             label: 'LinkedIn',
-            value: 'priyanshu-kumar1809',
+            value: 'dr-swatantar-kumar',
             icon: Linkedin,
             color: 'from-blue-600 to-blue-700',
-            href: 'https://linkedin.com/in/priyanshu-kumar1809',
+            href: 'https://www.linkedin.com/in/dr-swatantar-kumar-0864251aa',
             description: 'Professional networking and updates'
         },
         {
-            id: 'github',
-            label: 'GitHub',
-            value: 'MrRajat1809',
-            icon: Github,
-            color: 'from-gray-700 to-gray-800',
-            href: 'https://github.com/MrRajat1809',
-            description: 'Code repositories and projects'
+            id: 'orcid',
+            label: 'ORCID',
+            value: '0000-0002-9057-9911',
+            icon: ExternalLink,
+            color: 'from-green-700 to-green-800',
+            href: 'https://orcid.org/0000-0002-9057-9911',
+            description: 'Research publications and profile'
         }
     ];
 
     const interests = [
         'Research Collaboration',
-        'Publication Opportunities',
-        'Academic Discussions',
-        'Project Partnerships',
-        'Mentorship',
-        'Conference Speaking',
+        'Graduate Student Supervision',
+        'Joint Publications',
+        'Grant Proposals & Funding',
+        'Conference Invitations',
+        'Academic Consulting',
         'Other'
     ];
 
@@ -168,7 +168,7 @@ export default function ContactSection() {
                         </span>
                     </h2>
                     <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                        Open to discussing research opportunities, collaborations, and academic exchanges in computational structural biology
+                        Open to discussing research opportunities, collaborations, and academic exchanges in microbial biogeochemistry and environmental microbiology
                     </p>
                 </motion.div>
 
@@ -186,8 +186,9 @@ export default function ContactSection() {
                                 Get In Touch
                             </h3>
                             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                                For research collaborations, questions about my work, or discussions regarding
-                                opportunities in computational structural biology, please feel free to reach out.
+                                Available for research collaborations, graduate student supervision, joint publications,
+                                and academic consultations in microbial biogeochemistry, environmental microbiology, and
+                                nitrogen cycling. Open to international partnerships and interdisciplinary projects.
                             </p>
                         </motion.div>
 
@@ -281,7 +282,7 @@ export default function ContactSection() {
                                 <motion.a
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    href="/priyanshu_portfolio/resume.pdf"
+                                    href="/swatantar_portfolio/resume.pdf"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2 bg-gray-900 dark:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-all"
@@ -315,7 +316,7 @@ export default function ContactSection() {
                                 Send a Message
                             </h3>
                             <p className="text-gray-600 dark:text-gray-300 mb-8">
-                                Please use the form below to reach out. I typically respond within 24-48 hours.
+                                Please use the form below for inquiries. All messages are typically responded to within 24-48 business hours.
                             </p>
                         </motion.div>
 
@@ -500,7 +501,7 @@ export default function ContactSection() {
                                     <h5 className="font-semibold mb-2 text-gray-900 dark:text-white">Location</h5>
                                     <div className="flex items-center gap-2">
                                         <MapPin size={16} />
-                                        <span>Punjab, India (IST)</span>
+                                        <span>Himachal Pradesh, India (IST)</span>
                                     </div>
                                 </div>
                             </div>

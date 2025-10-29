@@ -8,7 +8,7 @@ import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
 import ResearchSection from '../components/ResearchSection';
-import ProjectsSection from '../components/ProjectsSection';
+import AchievementsSection from '../components/AchievementsSection';
 import ContactSection from '../components/ContactSection';
 import Analytics from '../components/Analytics';
 import ErrorBoundary from '../components/ErrorBoundary';
@@ -52,14 +52,14 @@ export default function Home() {
     const quickLinks = [
         { label: 'About', href: 'about' },
         { label: 'Research', href: 'research' },
-        { label: 'Projects', href: 'projects' },
+        { label: 'Achievements', href: 'projects' },
         { label: 'Contact', href: 'contact' }
     ];
 
     const socialFooterLinks = [
-        { href: 'mailto:rkp6055@gmail.com', label: 'Email', icon: 'Email' },
-        { href: 'https://github.com/MrRajat1809', label: 'GitHub', icon: 'GitHub' },
-        { href: 'https://linkedin.com/in/priyanshu-kumar1809', label: 'LinkedIn', icon: 'LinkedIn' }
+        { href: 'mailto:kumar.swatantar2020@gmail.com', label: 'Email', icon: 'Email' },
+        { href: 'https://orcid.org/0000-0002-9057-9911', label: 'ORCID', icon: 'ORCID' },
+        { href: 'https://www.linkedin.com/in/dr-swatantar-kumar-0864251aa', label: 'LinkedIn', icon: 'LinkedIn' }
     ];
 
     return (
@@ -93,9 +93,9 @@ export default function Home() {
                             <ResearchSection />
                         </section>
 
-                        {/* Projects Section */}
+                        {/* Achievements Section */}
                         <section id="projects">
-                            <ProjectsSection />
+                            <AchievementsSection />
                         </section>
 
                         {/* Contact Section */}
@@ -116,12 +116,13 @@ export default function Home() {
                                 {/* Brand */}
                                 <div className="md:col-span-2">
                                     <h3 className="text-xl md:text-2xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                                        Priyanshu Kumar
+                                        Dr. Swatantar Kumar
                                     </h3>
                                     <p className="text-gray-300 mb-4 leading-relaxed text-sm md:text-base">
-                                        Second-year Biotechnology undergraduate with research interests in computational
-                                        structural biology, network science, and stochastic modeling. Focus on developing
-                                        reproducible computational frameworks for structural biology research.
+                                        Assistant Professor at Chandigarh University | PhD from Friedrich Schiller University, Germany
+                                        (Max Planck Fellow) | Postdoctoral Researcher at Pacific Northwest National Laboratory, USA |
+                                        Specializing in microbial nitrogen cycling, anammox processes, and biogeochemical processes
+                                        in pristine subsurface ecosystems.
                                     </p>
                                     <div className="flex gap-3">
                                         {socialFooterLinks.map((link) => (
@@ -161,10 +162,10 @@ export default function Home() {
                                 <div>
                                     <h4 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Research Focus</h4>
                                     <div className="space-y-2 text-gray-300 text-xs md:text-sm">
-                                        <p>• Protein Structure Prediction</p>
-                                        <p>• Network Science</p>
-                                        <p>• Stochastic Modeling</p>
-                                        <p>• Computational Neuroscience</p>
+                                        <p>• Microbial Nitrogen Cycling</p>
+                                        <p>• Anammox & Denitrification</p>
+                                        <p>• Rhizosphere Biogeochemistry</p>
+                                        <p>• Environmental Microbiology</p>
                                     </div>
                                 </div>
                             </motion.div>
@@ -179,7 +180,7 @@ export default function Home() {
                             >
                                 <div className="text-gray-300 text-center md:text-left">
                                     <p className="text-base md:text-lg mb-1 md:mb-2">
-                                        © 2025 Priyanshu Kumar. All rights reserved.
+                                        © 2025 Dr. Swatantar Kumar. All rights reserved.
                                     </p>
                                     <p className="text-xs md:text-sm text-gray-400">
                                         Built with Next.js, JavaScript, Tailwind CSS, and Framer Motion

@@ -1,29 +1,29 @@
 {
-  "name": "priyanshu-portfolio",
+  "name": "swatantar-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Computational Structural Biologist Portfolio - Priyanshu Kumar",
+  "description": "Microbial Biogeochemist Portfolio - Dr. Swatantar Kumar",
   "keywords": [
     "portfolio",
-    "computational-biology",
-    "structural-biology",
-    "machine-learning",
-    "protein-prediction",
-    "alphafold",
-    "bioinformatics",
+    "microbial-biogeochemistry",
+    "microbial-ecology",
+    "nitrogen-cycle",
+    "groundwater-microbiology",
+    "biogeochemistry",
+    "environmental-microbiology",
     "research",
     "react",
     "nextjs"
   ],
   "author": {
-    "name": "Priyanshu Kumar",
-    "email": "rkp6055@gmail.com",
+    "name": "Dr. Swatantar Kumar",
+    "email": "kumar.swatantar2020@gmail.com",
     "url": "https://github.com/MrRajat1809"
   },
-  "homepage": "https://mrrajat1809.github.io/priyanshu_portfolio",
+  "homepage": "https://mrrajat1809.github.io/swatantar_portfolio",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MrRajat1809/priyanshu_portfolio.git"
+    "url": "https://github.com/MrRajat1809/swatantar_portfolio.git"
   },
   "scripts": {
     "dev": "next dev",

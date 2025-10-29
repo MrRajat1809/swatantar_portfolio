@@ -14,7 +14,7 @@ export default function Navbar({ activeSection, onSectionChange }) {
         { id: 'home', label: 'Home' },
         { id: 'about', label: 'About' },
         { id: 'research', label: 'Research' },
-        { id: 'projects', label: 'Projects' },
+        { id: 'projects', label: 'Achievements' },
         { id: 'contact', label: 'Contact' },
     ];
 
