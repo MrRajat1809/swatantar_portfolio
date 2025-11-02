@@ -17,6 +17,8 @@ import {
     Calendar,
     MapPin
 } from 'lucide-react';
+import Card, { CardContent } from './ui/Card';
+import Button from './ui/Button';
 
 export default function AchievementsSection() {
     const [selectedAchievement, setSelectedAchievement] = useState(null);
@@ -135,7 +137,7 @@ export default function AchievementsSection() {
     ];
 
     return (
-        <section className="py-24 px-4 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+        <section className="py-24 px-4 relative">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -146,7 +148,7 @@ export default function AchievementsSection() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                        <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-700 bg-clip-text text-transparent">
                             Professional Achievements
                         </span>
                     </h2>
@@ -163,19 +165,19 @@ export default function AchievementsSection() {
                     className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
                 >
                     {stats.map((stat, index) => (
-                        <motion.div
-                            key={index}
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center border border-gray-100 dark:border-gray-700"
-                        >
-                            <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-3`} />
-                            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-                                {stat.value}
-                            </div>
-                            <div className="text-sm text-gray-600 dark:text-gray-300">
-                                {stat.label}
-                            </div>
-                        </motion.div>
+                        <Card key={index} hover={true} className="text-center">
+                            <CardContent className="p-6">
+                                <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.6 }}>
+                                    <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-3`} />
+                                </motion.div>
+                                <div className="text-2xl font-bold text-[#00AEEF] mb-1 tracking-scientific">
+                                    {stat.value}
+                                </div>
+                                <div className="text-sm text-slate-gray tracking-wide">
+                                    {stat.label}
+                                </div>
+                            </CardContent>
+                        </Card>
                     ))}
                 </motion.div>
 
@@ -191,35 +193,31 @@ export default function AchievementsSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                whileHover={{ y: -8 }}
                                 onClick={() => setSelectedAchievement(achievement)}
-                                className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer border border-gray-100 dark:border-gray-700 overflow-hidden"
                             >
-                                {/* Header with gradient */}
-                                <div className={`h-2 bg-gradient-to-r ${achievement.color}`} />
-
-                                <div className="p-6">
+                                <Card hover={true} accentColor="#00AEEF" accentCorner={achievement.featured} className="cursor-pointer group overflow-hidden">
+                                    <CardContent className="p-4 sm:p-6">
                                     {/* Icon and Badge */}
-                                    <div className="flex items-start justify-between mb-4">
+                                    <div className="flex items-start justify-between mb-4 gap-2">
                                         <motion.div
                                             whileHover={{ rotate: 360 }}
                                             transition={{ duration: 0.6 }}
-                                            className={`p-3 bg-gradient-to-r ${achievement.color} rounded-xl shadow-lg`}
+                                            className={`p-2 sm:p-3 bg-gradient-to-r ${achievement.color} rounded-xl shadow-lg flex-shrink-0`}
                                         >
-                                            <Icon size={24} className="text-white" />
+                                            <Icon size={20} className="sm:w-6 sm:h-6 text-white" />
                                         </motion.div>
                                         {achievement.featured && (
-                                            <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400 rounded-full text-xs font-medium">
+                                            <span className="px-2 sm:px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400 rounded-full text-[10px] sm:text-xs font-medium flex-shrink-0">
                                                 Featured
                                             </span>
                                         )}
                                     </div>
 
                                     {/* Content */}
-                                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                    <h3 className="text-base sm:text-lg md:text-xl font-bold mb-3 text-navy group-hover:text-[#00AEEF] transition-colors tracking-scientific break-words">
                                         {achievement.title}
                                     </h3>
-                                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                                    <p className="text-xs sm:text-sm text-slate-gray mb-4 line-clamp-3 tracking-wide break-words">
                                         {achievement.description}
                                     </p>
 
@@ -227,11 +225,11 @@ export default function AchievementsSection() {
                                     {achievement.metrics && (
                                         <div className="grid grid-cols-3 gap-2 mb-4">
                                             {achievement.metrics.map((metric, idx) => (
-                                                <div key={idx} className="text-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                                                    <div className="text-xs font-bold text-blue-600 dark:text-blue-400 truncate">
+                                                <div key={idx} className="text-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg min-w-0">
+                                                    <div className="text-[10px] sm:text-xs font-bold text-blue-600 dark:text-blue-400 truncate">
                                                         {metric.value}
                                                     </div>
-                                                    <div className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                                                    <div className="text-[9px] sm:text-xs text-gray-500 dark:text-gray-400 truncate">
                                                         {metric.label}
                                                     </div>
                                                 </div>
@@ -245,9 +243,10 @@ export default function AchievementsSection() {
                                             <Calendar size={14} />
                                             <span>{achievement.year}</span>
                                         </div>
-                                        <ExternalLink size={16} className="text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+                                        <ExternalLink size={16} className="text-gray-400 group-hover:text-[#00AEEF] transition-colors" />
                                     </div>
-                                </div>
+                                    </CardContent>
+                                </Card>
                             </motion.div>
                         );
                     })}
@@ -268,40 +267,40 @@ export default function AchievementsSection() {
                                 animate={{ scale: 1, opacity: 1, y: 0 }}
                                 exit={{ scale: 0.8, opacity: 0, y: 20 }}
                                 transition={{ type: "spring", bounce: 0.3, duration: 0.5 }}
-                                className="bg-white dark:bg-gray-800 rounded-2xl max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl"
+                                className="bg-white dark:bg-gray-800 rounded-2xl max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl w-full mx-4"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 {/* Modal Header with gradient */}
                                 <div className={`h-2 bg-gradient-to-r ${selectedAchievement.color}`} />
 
-                                <div className="p-8">
-                                    <div className="flex items-start justify-between mb-6">
-                                        <div className="flex items-center gap-4">
+                                <div className="p-4 sm:p-6 md:p-8">
+                                    <div className="flex items-start justify-between mb-6 gap-4">
+                                        <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
                                             <motion.div
                                                 whileHover={{ rotate: 360 }}
                                                 transition={{ duration: 0.6 }}
-                                                className={`p-3 bg-gradient-to-r ${selectedAchievement.color} rounded-xl shadow-lg`}
+                                                className={`p-2 sm:p-3 bg-gradient-to-r ${selectedAchievement.color} rounded-xl shadow-lg flex-shrink-0`}
                                             >
                                                 {React.createElement(selectedAchievement.icon, {
-                                                    size: 28,
-                                                    className: 'text-white'
+                                                    size: 24,
+                                                    className: 'sm:w-7 sm:h-7 text-white'
                                                 })}
                                             </motion.div>
-                                            <div>
-                                                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                                            <div className="min-w-0 flex-1">
+                                                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 break-words">
                                                     {selectedAchievement.title}
                                                 </h3>
-                                                <div className="flex items-center gap-3 flex-wrap">
-                                                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                                                <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+                                                    <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                                                         {selectedAchievement.year}
                                                     </span>
                                                     {selectedAchievement.location && (
-                                                        <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
-                                                            <MapPin size={14} />
-                                                            {selectedAchievement.location}
+                                                        <div className="flex items-center gap-1 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                                                            <MapPin size={12} className="sm:w-3.5 sm:h-3.5" />
+                                                            <span className="break-words">{selectedAchievement.location}</span>
                                                         </div>
                                                     )}
-                                                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full text-xs font-medium">
+                                                    <span className="px-2 sm:px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full text-[10px] sm:text-xs font-medium">
                                                         {selectedAchievement.status}
                                                     </span>
                                                 </div>
@@ -311,9 +310,9 @@ export default function AchievementsSection() {
                                             whileHover={{ scale: 1.1, rotate: 90 }}
                                             whileTap={{ scale: 0.9 }}
                                             onClick={() => setSelectedAchievement(null)}
-                                            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                                            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex-shrink-0"
                                         >
-                                            <X size={24} className="text-gray-600 dark:text-gray-300" />
+                                            <X size={20} className="sm:w-6 sm:h-6 text-gray-600 dark:text-gray-300" />
                                         </motion.button>
                                     </div>
 
@@ -324,10 +323,10 @@ export default function AchievementsSection() {
                                         transition={{ delay: 0.2 }}
                                         className="mb-6"
                                     >
-                                        <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">
+                                        <h4 className="text-base sm:text-lg font-semibold mb-3 text-gray-900 dark:text-white">
                                             Details
                                         </h4>
-                                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed break-words">
                                             {selectedAchievement.longDescription}
                                         </p>
                                     </motion.div>
@@ -372,18 +371,18 @@ export default function AchievementsSection() {
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: 0.4 }}
-                                            className="grid grid-cols-3 gap-4"
+                                            className="grid grid-cols-3 gap-2 sm:gap-4"
                                         >
                                             {selectedAchievement.metrics.map((metric, idx) => (
                                                 <motion.div
                                                     key={idx}
                                                     whileHover={{ scale: 1.05 }}
-                                                    className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-xl"
+                                                    className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-xl min-w-0"
                                                 >
-                                                    <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                                                    <div className="text-base sm:text-lg md:text-xl font-bold text-blue-600 dark:text-blue-400 mb-1 break-words">
                                                         {metric.value}
                                                     </div>
-                                                    <div className="text-sm text-gray-600 dark:text-gray-300">
+                                                    <div className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-300 break-words">
                                                         {metric.label}
                                                     </div>
                                                 </motion.div>
@@ -415,26 +414,26 @@ export default function AchievementsSection() {
                             Open to discussing research collaborations, academic opportunities, and exchanges in microbial biogeochemistry, environmental microbiology, and related fields.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
-                            <motion.a
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                href="mailto:kumar.swatantar2020@gmail.com"
-                                className="flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl"
-                            >
-                                <Mail size={20} />
-                                <span>Start a Conversation</span>
-                            </motion.a>
-                            <motion.a
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                href="https://orcid.org/0000-0002-9057-9911"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-medium transition-all hover:bg-white/10"
-                            >
-                                <ExternalLink size={20} />
-                                <span>View Publications</span>
-                            </motion.a>
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                <Button
+                                    variant="secondary"
+                                    href="mailto:kumar.swatantar2020@gmail.com"
+                                    className="flex items-center gap-2 bg-white text-[#007CB8]"
+                                >
+                                    <Mail size={20} />
+                                    <span>Start a Conversation</span>
+                                </Button>
+                            </motion.div>
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                <Button
+                                    variant="secondary"
+                                    href="https://orcid.org/0000-0002-9057-9911"
+                                    className="flex items-center gap-2 border border-white/30 text-white hover:bg-white/10"
+                                >
+                                    <ExternalLink size={20} />
+                                    <span>View Publications</span>
+                                </Button>
+                            </motion.div>
                         </div>
                     </motion.div>
                 </motion.div>

@@ -18,6 +18,8 @@ import {
     Copy,
     Download
 } from 'lucide-react';
+import { GlassCard } from './ui/Card';
+import Button from './ui/Button';
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({
@@ -152,7 +154,7 @@ export default function ContactSection() {
     };
 
     return (
-        <section className="py-24 px-4 bg-white dark:bg-gray-900">
+        <section className="py-24 px-4 relative">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -163,7 +165,7 @@ export default function ContactSection() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                        <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-700 bg-clip-text text-transparent">
                             Contact
                         </span>
                     </h2>
@@ -201,24 +203,24 @@ export default function ContactSection() {
                                     whileHover={{ scale: 1.02, x: 8 }}
                                     className="group"
                                 >
-                                    <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-4">
+                                    <GlassCard className="p-4 sm:p-6 hover-lift">
+                                        <div className="flex items-center justify-between gap-3 sm:gap-4">
+                                            <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
                                                 <motion.div
                                                     whileHover={{ rotate: 360 }}
                                                     transition={{ duration: 0.6 }}
-                                                    className={`p-3 bg-gradient-to-r ${method.color} rounded-xl`}
+                                                    className={`p-2 sm:p-3 bg-gradient-to-r ${method.color} rounded-xl flex-shrink-0`}
                                                 >
-                                                    <method.icon className="w-6 h-6 text-white" />
+                                                    <method.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                                 </motion.div>
-                                                <div>
-                                                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                                <div className="min-w-0 flex-1">
+                                                    <h4 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors break-words">
                                                         {method.label}
                                                     </h4>
-                                                    <p className="text-gray-600 dark:text-gray-300 font-medium">
+                                                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 font-medium break-all">
                                                         {method.value}
                                                     </p>
-                                                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                                                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 break-words">
                                                         {method.description}
                                                     </p>
                                                 </div>
@@ -268,7 +270,7 @@ export default function ContactSection() {
                                                 </motion.a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </GlassCard>
                                 </motion.div>
                             ))}
                         </div>
@@ -279,26 +281,26 @@ export default function ContactSection() {
                                 Quick Actions
                             </h4>
                             <div className="flex flex-wrap gap-4">
-                                <motion.a
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    href="/swatantar_portfolio/resume.pdf"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 bg-gray-900 dark:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-all"
-                                >
-                                    <Download size={20} />
-                                    <span>Download CV</span>
-                                </motion.a>
-                                <motion.a
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    href="#research"
-                                    className="flex items-center gap-2 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 px-6 py-3 rounded-lg font-medium transition-all"
-                                >
-                                    <FileText size={20} />
-                                    <span>View Research</span>
-                                </motion.a>
+                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                    <Button
+                                        variant="primary"
+                                        href="/swatantar_portfolio/resume.pdf"
+                                        className="flex items-center gap-2"
+                                    >
+                                        <Download size={20} />
+                                        <span>Download CV</span>
+                                    </Button>
+                                </motion.div>
+                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                    <Button
+                                        variant="secondary"
+                                        href="#research"
+                                        className="flex items-center gap-2"
+                                    >
+                                        <FileText size={20} />
+                                        <span>View Research</span>
+                                    </Button>
+                                </motion.div>
                             </div>
                         </motion.div>
                     </motion.div>
@@ -309,8 +311,8 @@ export default function ContactSection() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl shadow-xl"
                     >
+                        <GlassCard className="p-8">
                         <motion.div variants={itemVariants}>
                             <h3 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                                 Send a Message
@@ -506,6 +508,7 @@ export default function ContactSection() {
                                 </div>
                             </div>
                         </motion.div>
+                        </GlassCard>
                     </motion.div>
                 </div>
             </div>

@@ -18,9 +18,13 @@ import {
     X,
     Network
 } from 'lucide-react';
+import Card, { CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './ui/Card';
+import Tag, { TagGroup } from './ui/Tag';
 
 export default function ResearchSection() {
     const [selectedPublication, setSelectedPublication] = useState(null);
+    const [activeFilter, setActiveFilter] = useState('all');
+    const [activeCategory, setActiveCategory] = useState(null);
 
     const researchAreas = [
         {
@@ -66,6 +70,7 @@ export default function ResearchSection() {
             impact: 'High',
             technologies: ['15N Isotope Tracing', 'DNA/RNA Sequencing', 'qPCR', 'IRMS-GC', 'Anammox Enrichment'],
             type: 'published',
+            category: 'nitrogen-cycle',
             metrics: [
                 { label: 'Citations', value: '50+' },
                 { label: 'Impact Factor', value: '4.2' },
@@ -85,6 +90,7 @@ export default function ResearchSection() {
             impact: 'High',
             technologies: ['Enrichment Cultures', 'Raman Spectroscopy', 'Functional Assays', 'Anaerobic Techniques'],
             type: 'published',
+            category: 'nitrogen-cycle',
             metrics: [
                 { label: 'Citations', value: '35+' },
                 { label: 'Novel Consortium', value: 'Yes' },
@@ -104,6 +110,7 @@ export default function ResearchSection() {
             impact: 'High',
             technologies: ['Soil Microbiology', 'Community Analysis', 'Ecosystem Function', 'Disturbance Ecology'],
             type: 'published',
+            category: 'rhizosphere-biogeochemistry',
             metrics: [
                 { label: 'Disturbance Types', value: '2' },
                 { label: 'Study Sites', value: 'Multiple' },
@@ -123,6 +130,7 @@ export default function ResearchSection() {
             impact: 'Medium',
             technologies: ['Co-culture Studies', 'Growth Assays', 'Microbial Interactions', 'Groundwater Microbiology'],
             type: 'published',
+            category: 'nitrogen-cycle',
             metrics: [
                 { label: 'Bacterial Strains', value: '15+' },
                 { label: 'Interaction Types', value: 'Multiple' },
@@ -142,6 +150,7 @@ export default function ResearchSection() {
             impact: 'Medium',
             technologies: ['35SO4 Radiotracer', 'Marine Microbiology', 'Biogeochemistry', 'Sulfur Cycling'],
             type: 'published',
+            category: 'environmental-microbiology',
             metrics: [
                 { label: 'Study Duration', value: '40 Days' },
                 { label: 'Sampling Sites', value: 'Multiple' },
@@ -161,6 +170,7 @@ export default function ResearchSection() {
             impact: 'High',
             technologies: ['FTICR-MS', 'Metabolomics', 'Community Science', 'Global Sampling', 'Data Analysis'],
             type: 'published',
+            category: 'environmental-microbiology',
             metrics: [
                 { label: 'River Systems', value: 'Global' },
                 { label: 'Metabolites', value: '1000+' },
@@ -180,6 +190,7 @@ export default function ResearchSection() {
             impact: 'Medium',
             technologies: ['Colloid Analysis', 'Carbon Characterization', 'Sediment Geochemistry', 'Spectroscopy'],
             type: 'published',
+            category: 'environmental-microbiology',
             metrics: [
                 { label: 'Sediment Types', value: '2' },
                 { label: 'Carbon Release', value: 'Quantified' },
@@ -199,6 +210,7 @@ export default function ResearchSection() {
             impact: 'Medium',
             technologies: ['Raman Spectroscopy', 'Gas Analysis', 'Denitrification', 'Bacterial Characterization'],
             type: 'published',
+            category: 'rhizosphere-biogeochemistry',
             metrics: [
                 { label: 'Bacterial Strains', value: '2' },
                 { label: 'Real-time Analysis', value: 'Yes' },
@@ -218,6 +230,7 @@ export default function ResearchSection() {
             impact: 'Medium',
             technologies: ['Plant Physiology', 'Heavy Metal Stress', 'Biochemical Assays', 'Time-series Analysis'],
             type: 'published',
+            category: 'environmental-microbiology',
             metrics: [
                 { label: 'Study Duration', value: '45 Days' },
                 { label: 'Treatment Types', value: '2' },
@@ -237,6 +250,7 @@ export default function ResearchSection() {
             impact: 'High',
             technologies: ['Plant Physiology', 'Toxicity Mechanisms', 'Stress Response', 'Review Article'],
             type: 'published',
+            category: 'environmental-microbiology',
             metrics: [
                 { label: 'Review Type', value: 'Comprehensive' },
                 { label: 'Topics Covered', value: 'Multiple' },
@@ -256,6 +270,7 @@ export default function ResearchSection() {
             impact: 'Medium',
             technologies: ['Amino Acid Analysis', 'Plant Biochemistry', 'Stress Mitigation', 'Zea mays'],
             type: 'published',
+            category: 'environmental-microbiology',
             metrics: [
                 { label: 'Amino Acids', value: 'Multiple' },
                 { label: 'Synergistic Effect', value: 'Yes' },
@@ -277,6 +292,7 @@ export default function ResearchSection() {
             impact: 'High',
             technologies: ['Root Blotting', 'UV-Spectrophotometry', '13CO2 Labeling', 'IRMS', 'Phosphatase Assays'],
             type: 'in-preparation',
+            category: 'rhizosphere-biogeochemistry',
             metrics: [
                 { label: 'P Forms', value: 'Organic/Inorganic' },
                 { label: 'Analysis Type', value: 'Non-destructive' },
@@ -296,6 +312,7 @@ export default function ResearchSection() {
             impact: 'High',
             technologies: ['FTICR-MS', 'NMR', 'Optodes', 'Metabolomics', 'Biogeochemical Analysis'],
             type: 'in-preparation',
+            category: 'rhizosphere-biogeochemistry',
             metrics: [
                 { label: 'Sediment Samples', value: '100+' },
                 { label: 'Metabolites Analyzed', value: '1000+' },
@@ -315,6 +332,7 @@ export default function ResearchSection() {
             impact: 'High',
             technologies: ['FTICR-MS', 'NMR', 'Optodes', 'Pyrogenic OM', 'Sediment Analysis'],
             type: 'in-preparation',
+            category: 'environmental-microbiology',
             metrics: [
                 { label: 'OM Types', value: '2' },
                 { label: 'Sites', value: 'US-wide' },
@@ -334,6 +352,7 @@ export default function ResearchSection() {
             impact: 'Medium',
             technologies: ['35SO4 Radiotracer', 'Marine Biogeochemistry', 'Upwelling Analysis', 'Sulfate Reduction'],
             type: 'in-preparation',
+            category: 'environmental-microbiology',
             metrics: [
                 { label: 'Study Area', value: 'Arabian Sea' },
                 { label: 'Environments', value: 'Nearshore/Offshore' },
@@ -368,12 +387,33 @@ export default function ResearchSection() {
         return configs[status] || configs.published;
     };
 
+    // Filter publications based on active filters
+    const filteredPublications = publications.filter(pub => {
+        // Filter by status (All, Published, In Preparation)
+        if (activeFilter === 'published' && pub.status !== 'published') return false;
+        if (activeFilter === 'in-preparation' && pub.status !== 'in-preparation') return false;
+
+        // Filter by research category
+        if (activeCategory && pub.category !== activeCategory) return false;
+
+        return true;
+    });
+
+    const handleCategoryClick = (categoryId) => {
+        if (activeCategory === categoryId) {
+            setActiveCategory(null); // Toggle off if clicking the same category
+        } else {
+            setActiveCategory(categoryId);
+        }
+        setActiveFilter('all'); // Reset status filter when changing category
+    };
+
     return (
-        <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
-            {/* Background decoration */}
+        <section className="py-20 relative overflow-hidden">
+            {/* Subtle overlay decorations */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/10 dark:bg-blue-600/5 rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-400/10 dark:bg-purple-600/5 rounded-full blur-3xl"></div>
+                <div className="absolute -top-40 -right-40 w-80 h-80 bg-cyan-400/5 dark:bg-cyan-600/5 rounded-full blur-3xl"></div>
+                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-400/5 dark:bg-blue-600/5 rounded-full blur-3xl"></div>
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -389,7 +429,7 @@ export default function ResearchSection() {
                         <Brain className="w-4 h-4" />
                         <span className="text-sm font-medium">Research Portfolio</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-700 bg-clip-text text-transparent">
                         Scientific Contributions
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-lg">
@@ -412,34 +452,39 @@ export default function ResearchSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.1 * index }}
-                            whileHover={{ y: -10, scale: 1.02 }}
-                            className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-all duration-300"
+                            onClick={() => handleCategoryClick(area.id)}
                         >
-                            <div className={`w-12 h-12 bg-gradient-to-br ${area.color} rounded-xl flex items-center justify-center mb-4 shadow-lg`}>
-                                <area.icon className="w-6 h-6 text-white" />
-                            </div>
-                            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-                                {area.title}
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
-                                {area.description}
-                            </p>
-                            <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
-                                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                                    {area.publications} Publications
-                                </span>
-                                <ChevronRight className="w-5 h-5 text-gray-400" />
-                            </div>
-                            <div className="flex flex-wrap gap-1 mt-3">
-                                {area.keywords.slice(0, 3).map((keyword) => (
-                                    <span
-                                        key={keyword}
-                                        className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded"
-                                    >
-                                        {keyword}
-                                    </span>
-                                ))}
-                            </div>
+                            <Card
+                                hover={true}
+                                accentColor="#00AEEF"
+                                accentCorner={true}
+                                className={`cursor-pointer transition-all ${activeCategory === area.id ? 'ring-2 ring-blue-500 shadow-xl' : ''}`}
+                            >
+                                <CardContent className="p-6">
+                                    <div className={`w-12 h-12 bg-gradient-to-br ${area.color} rounded-xl flex items-center justify-center mb-4 shadow-lg`}>
+                                        <area.icon className="w-6 h-6 text-white" />
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-2 text-navy tracking-scientific">
+                                        {area.title}
+                                    </h3>
+                                    <p className="text-slate-gray mb-4 text-sm leading-relaxed tracking-wide">
+                                        {area.description}
+                                    </p>
+                                    <div className="flex items-center justify-between pt-4 border-t border-minimal">
+                                        <span className="text-sm font-medium text-slate-gray tracking-scientific">
+                                            {area.publications} Publications
+                                        </span>
+                                        <ChevronRight className="w-5 h-5 text-[#00AEEF]" />
+                                    </div>
+                                    <TagGroup className="mt-3">
+                                        {area.keywords.slice(0, 3).map((keyword) => (
+                                            <Tag key={keyword} category="research">
+                                                {keyword}
+                                            </Tag>
+                                        ))}
+                                    </TagGroup>
+                                </CardContent>
+                            </Card>
                         </motion.div>
                     ))}
                 </motion.div>
@@ -452,77 +497,105 @@ export default function ResearchSection() {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="mb-16"
                 >
-                    <div className="flex items-center justify-between mb-8">
-                        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-                            Publications
-                        </h3>
-                        <div className="flex gap-2">
-                            {['All', 'Published', 'In Preparation'].map((filter) => (
-                                <button
-                                    key={filter}
-                                    className="px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors border border-gray-200 dark:border-gray-700"
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
+                        <div>
+                            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                                Publications
+                            </h3>
+                            {activeCategory && (
+                                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                    Filtered by: {researchAreas.find(a => a.id === activeCategory)?.title}
+                                    <button
+                                        onClick={() => setActiveCategory(null)}
+                                        className="ml-2 text-blue-600 dark:text-blue-400 hover:underline"
+                                    >
+                                        Clear filter
+                                    </button>
+                                </p>
+                            )}
+                        </div>
+                        <div className="flex gap-2 flex-wrap">
+                            {[
+                                { label: 'All', value: 'all' },
+                                { label: 'Published', value: 'published' },
+                                { label: 'In Preparation', value: 'in-preparation' }
+                            ].map((filter) => (
+                                <motion.button
+                                    key={filter.value}
+                                    onClick={() => setActiveFilter(filter.value)}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all border ${
+                                        activeFilter === filter.value
+                                            ? 'bg-blue-600 text-white border-blue-600 shadow-lg'
+                                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'
+                                    }`}
                                 >
-                                    {filter}
-                                </button>
+                                    {filter.label}
+                                </motion.button>
                             ))}
                         </div>
                     </div>
 
-                    <div className="space-y-4">
-                        {publications.map((pub, index) => (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                        {filteredPublications.map((pub, index) => (
                             <motion.div
                                 key={pub.id}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.05 }}
-                                whileHover={{ x: 10, scale: 1.01 }}
+                                transition={{ duration: 0.4, delay: index * 0.03 }}
+                                whileHover={{ scale: 1.05, y: -5 }}
                                 onClick={() => setSelectedPublication(pub)}
-                                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 cursor-pointer hover:shadow-2xl transition-all duration-300 group"
+                                className="cursor-pointer"
                             >
-                                <div className="flex items-start justify-between gap-4">
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusConfig(pub.status).color}`}>
-                                                {getStatusConfig(pub.status).label}
+                                <Card hover={true} className="h-full">
+                                    <CardContent className="p-4 h-full flex flex-col min-h-[280px]">
+                                        {/* Status Badge */}
+                                        <div className="mb-3">
+                                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusConfig(pub.status).color}`}>
+                                                {pub.status === 'published' ? '✓' : '⏳'}
                                             </span>
-                                            <span className="text-sm text-gray-500 dark:text-gray-400">
-                                                {pub.year}
-                                            </span>
-                                            {pub.impact === 'High' && (
-                                                <span className="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded text-xs font-medium">
-                                                    High Impact
-                                                </span>
-                                            )}
                                         </div>
-                                        <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+
+                                        {/* Year */}
+                                        <div className="text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                                            {pub.year}
+                                        </div>
+
+                                        {/* Title - truncated with proper word breaking */}
+                                        <h4 className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-2 line-clamp-3 flex-grow break-words hyphens-auto">
                                             {pub.title}
                                         </h4>
-                                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                                            {pub.authors.slice(0, 3).join(', ')}
-                                            {pub.authors.length > 3 && ` +${pub.authors.length - 3} more`}
-                                        </p>
-                                        <p className="text-sm font-medium text-blue-600 dark:text-blue-400">
+
+                                        {/* Journal - with word breaking */}
+                                        <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400 line-clamp-2 mb-3 break-words">
                                             {pub.journal}
                                         </p>
-                                    </div>
-                                    <div className="flex flex-col items-end gap-2">
-                                        <motion.button
-                                            whileHover={{ scale: 1.1 }}
-                                            whileTap={{ scale: 0.9 }}
-                                            className="p-2 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
-                                        >
-                                            <ExternalLink size={20} />
-                                        </motion.button>
-                                        {pub.doi && (
-                                            <span className="text-xs text-gray-500 dark:text-gray-400">
-                                                DOI
-                                            </span>
+
+                                        {/* Impact Badge */}
+                                        {pub.impact === 'High' && (
+                                            <div className="mt-auto">
+                                                <span className="inline-flex items-center gap-1 text-[10px] sm:text-xs text-yellow-700 dark:text-yellow-400">
+                                                    <Award size={12} />
+                                                    High Impact
+                                                </span>
+                                            </div>
                                         )}
-                                    </div>
-                                </div>
+
+                                        {/* Hover indicator */}
+                                        <div className="mt-2 text-[10px] sm:text-xs text-blue-600 dark:text-blue-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                                            Click for details →
+                                        </div>
+                                    </CardContent>
+                                </Card>
                             </motion.div>
                         ))}
+                    </div>
+
+                    {/* Show count */}
+                    <div className="text-center mt-6 text-sm text-gray-600 dark:text-gray-400">
+                        Showing {filteredPublications.length} of {publications.length} publications
                     </div>
                 </motion.div>
 
@@ -535,19 +608,19 @@ export default function ResearchSection() {
                     className="grid grid-cols-2 md:grid-cols-4 gap-6"
                 >
                     {researchMetrics.map((metric) => (
-                        <motion.div
-                            key={metric.label}
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center border border-gray-100 dark:border-gray-700"
-                        >
-                            <metric.icon className={`w-8 h-8 ${metric.color} mx-auto mb-3`} />
-                            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-                                {metric.value}
-                            </div>
-                            <div className="text-gray-600 dark:text-gray-300 text-sm">
-                                {metric.label}
-                            </div>
-                        </motion.div>
+                        <Card key={metric.label} hover={true} className="text-center">
+                            <CardContent className="p-6">
+                                <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.6 }}>
+                                    <metric.icon className={`w-8 h-8 ${metric.color} mx-auto mb-3`} />
+                                </motion.div>
+                                <div className="text-2xl font-bold text-[#00AEEF] mb-1 tracking-scientific">
+                                    {metric.value}
+                                </div>
+                                <div className="text-slate-gray text-sm tracking-wide">
+                                    {metric.label}
+                                </div>
+                            </CardContent>
+                        </Card>
                     ))}
                 </motion.div>
 
@@ -566,20 +639,20 @@ export default function ResearchSection() {
                                 animate={{ scale: 1, opacity: 1, y: 0 }}
                                 exit={{ scale: 0.8, opacity: 0, y: 20 }}
                                 transition={{ type: "spring", bounce: 0.3, duration: 0.5 }}
-                                className="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl"
+                                className="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl w-full mx-4"
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                <div className="p-8">
-                                    <div className="flex justify-between items-start mb-6">
-                                        <div>
-                                            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                                <div className="p-4 sm:p-6 md:p-8">
+                                    <div className="flex justify-between items-start mb-6 gap-4">
+                                        <div className="flex-1 min-w-0">
+                                            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 break-words">
                                                 {selectedPublication.title}
                                             </h3>
-                                            <div className="flex items-center gap-4 mb-4 flex-wrap">
-                                                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusConfig(selectedPublication.status).color}`}>
+                                            <div className="flex items-center gap-2 sm:gap-4 mb-4 flex-wrap">
+                                                <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${getStatusConfig(selectedPublication.status).color}`}>
                                                     {getStatusConfig(selectedPublication.status).label}
                                                 </span>
-                                                <span className="text-gray-600 dark:text-gray-300">
+                                                <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 break-words">
                                                     {selectedPublication.year} • {selectedPublication.journal}
                                                 </span>
                                             </div>
@@ -587,37 +660,37 @@ export default function ResearchSection() {
                                         <motion.button
                                             whileHover={{ scale: 1.1, rotate: 90 }}
                                             onClick={() => setSelectedPublication(null)}
-                                            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                                            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex-shrink-0"
                                         >
-                                            <X size={24} />
+                                            <X size={20} className="sm:w-6 sm:h-6" />
                                         </motion.button>
                                     </div>
 
                                     <div className="space-y-6">
                                         <div>
-                                            <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">Authors</h4>
-                                            <p className="text-gray-600 dark:text-gray-300">
+                                            <h4 className="text-sm sm:text-base font-semibold mb-2 text-gray-900 dark:text-white">Authors</h4>
+                                            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 break-words leading-relaxed">
                                                 {selectedPublication.authors.join(', ')}
                                             </p>
                                         </div>
 
                                         <div>
-                                            <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">Abstract</h4>
-                                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                            <h4 className="text-sm sm:text-base font-semibold mb-2 text-gray-900 dark:text-white">Abstract</h4>
+                                            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed break-words">
                                                 {selectedPublication.abstract}
                                             </p>
                                         </div>
 
                                         {selectedPublication.metrics && (
                                             <div>
-                                                <h4 className="font-semibold mb-3 text-gray-900 dark:text-white">Key Metrics</h4>
-                                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                                <h4 className="text-sm sm:text-base font-semibold mb-3 text-gray-900 dark:text-white">Key Metrics</h4>
+                                                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                                                     {selectedPublication.metrics.map((metric, idx) => (
-                                                        <div key={idx} className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-xl">
-                                                            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                                                        <div key={idx} className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-xl">
+                                                            <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1 break-words">
                                                                 {metric.value}
                                                             </div>
-                                                            <div className="text-sm text-gray-600 dark:text-gray-300">
+                                                            <div className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-300 break-words">
                                                                 {metric.label}
                                                             </div>
                                                         </div>
@@ -627,12 +700,12 @@ export default function ResearchSection() {
                                         )}
 
                                         <div>
-                                            <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">Technologies Used</h4>
+                                            <h4 className="text-sm sm:text-base font-semibold mb-2 text-gray-900 dark:text-white">Technologies Used</h4>
                                             <div className="flex flex-wrap gap-2">
                                                 {selectedPublication.technologies.map((tech) => (
                                                     <span
                                                         key={tech}
-                                                        className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-lg"
+                                                        className="px-2 sm:px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-lg text-[10px] sm:text-xs break-words"
                                                     >
                                                         {tech}
                                                     </span>
@@ -646,9 +719,9 @@ export default function ResearchSection() {
                                                 href={`https://doi.org/${selectedPublication.doi}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all"
+                                                className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all text-sm sm:text-base"
                                             >
-                                                <ExternalLink size={20} />
+                                                <ExternalLink size={16} className="sm:w-5 sm:h-5" />
                                                 <span>View Publication</span>
                                             </motion.a>
                                         )}

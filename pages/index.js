@@ -12,6 +12,7 @@ import AchievementsSection from '../components/AchievementsSection';
 import ContactSection from '../components/ContactSection';
 import Analytics from '../components/Analytics';
 import ErrorBoundary from '../components/ErrorBoundary';
+import BackgroundCubes from '../components/BackgroundCubes';
 
 export default function Home() {
     const [activeSection, setActiveSection] = useState('home');
@@ -65,7 +66,10 @@ export default function Home() {
     return (
         <ErrorBoundary>
             <ThemeProvider>
-                <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+                <div className="min-h-screen text-gray-900 dark:text-white relative">
+                    {/* Powder blue background with animated cube clusters */}
+                    <BackgroundCubes />
+
                     <SEO />
                     <Analytics />
 
@@ -105,7 +109,7 @@ export default function Home() {
                     </main>
 
                     {/* Enhanced Footer */}
-                    <footer className="bg-gray-900 dark:bg-black text-white py-12 md:py-16">
+                    <footer className="bg-gray-900 dark:bg-black text-white py-12 md:py-16 relative z-10">
                         <div className="max-w-7xl mx-auto px-4 md:px-6">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -115,7 +119,7 @@ export default function Home() {
                             >
                                 {/* Brand */}
                                 <div className="md:col-span-2">
-                                    <h3 className="text-xl md:text-2xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                                    <h3 className="text-xl md:text-2xl font-bold mb-3 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                                         Dr. Swatantar Kumar
                                     </h3>
                                     <p className="text-gray-300 mb-4 leading-relaxed text-sm md:text-base">
@@ -150,7 +154,7 @@ export default function Home() {
                                                 key={link.label}
                                                 whileHover={{ x: 4 }}
                                                 onClick={() => scrollToSection(link.href)}
-                                                className="block text-gray-300 hover:text-blue-400 transition-colors text-sm md:text-base"
+                                                className="block text-gray-300 hover:text-cyan-400 transition-colors text-sm md:text-base"
                                             >
                                                 {link.label}
                                             </motion.button>
@@ -192,7 +196,7 @@ export default function Home() {
                                     whileHover={{ scale: 1.05, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => scrollToSection('home')}
-                                    className="bg-blue-600 hover:bg-blue-700 px-5 md:px-6 py-2.5 md:py-3 rounded-full font-medium transition-all shadow-lg hover:shadow-xl text-sm md:text-base"
+                                    className="bg-cyan-600 hover:bg-cyan-700 px-5 md:px-6 py-2.5 md:py-3 rounded-full font-medium transition-all shadow-lg hover:shadow-xl text-sm md:text-base"
                                 >
                                     Back to Top ↑
                                 </motion.button>
@@ -211,7 +215,7 @@ export default function Home() {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => scrollToSection('contact')}
-                            className="w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all"
+                            className="w-12 h-12 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all"
                             title="Quick Contact"
                         >
                             <span className="text-xs font-bold">Contact</span>

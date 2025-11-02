@@ -2,13 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, Computer } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeProvider';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar({ activeSection, onSectionChange }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const { theme, setTheme } = useTheme();
 
     const navItems = [
         { id: 'home', label: 'Home' },
@@ -41,24 +39,6 @@ export default function Navbar({ activeSection, onSectionChange }) {
         setIsMenuOpen(false);
     };
 
-    const cycleTheme = () => {
-        if (theme === 'light') setTheme('dark');
-        else if (theme === 'dark') setTheme('system');
-        else setTheme('light');
-    };
-
-    const getThemeIcon = () => {
-        switch (theme) {
-            case 'light':
-                return <Sun size={20} />;
-            case 'dark':
-                return <Moon size={20} />;
-            case 'system':
-                return <Computer size={20} />;
-            default:
-                return <Sun size={20} />;
-        }
-    };
 
     return (
         <motion.nav
@@ -66,7 +46,7 @@ export default function Navbar({ activeSection, onSectionChange }) {
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}
             className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg'
+                    ? 'bg-white/80 dark:bg-gray-900/90 backdrop-blur-md shadow-lg'
                     : 'bg-transparent'
                 }`}
         >
@@ -76,10 +56,10 @@ export default function Navbar({ activeSection, onSectionChange }) {
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="text-2xl font-bold gradient-text cursor-pointer"
+                        className="text-2xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent cursor-pointer"
                         onClick={() => scrollToSection('home')}
                     >
-                        Priyanshu Kumar
+                        Dr. Swatantar Kumar
                     </motion.button>
 
                     {/* Desktop Menu */}
@@ -91,46 +71,25 @@ export default function Navbar({ activeSection, onSectionChange }) {
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => scrollToSection(item.id)}
                                 className={`relative px-3 py-2 rounded-lg transition-colors ${activeSection === item.id
-                                        ? 'text-blue-600 dark:text-blue-400 font-medium'
-                                        : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                                        ? 'text-cyan-600 dark:text-cyan-400 font-medium'
+                                        : 'text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400'
                                     }`}
                             >
                                 {item.label}
                                 {activeSection === item.id && (
                                     <motion.div
                                         layoutId="activeTab"
-                                        className="absolute inset-0 bg-blue-100 dark:bg-blue-900/30 rounded-lg -z-10"
+                                        className="absolute inset-0 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg -z-10"
                                         initial={false}
                                         transition={{ type: 'spring', bounce: 0.25, duration: 0.6 }}
                                     />
                                 )}
                             </motion.button>
                         ))}
-
-                        {/* Theme Toggle */}
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={cycleTheme}
-                            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                            title={`Current theme: ${theme}`}
-                        >
-                            {getThemeIcon()}
-                        </motion.button>
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center space-x-4">
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={cycleTheme}
-                            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
-                            title={`Current theme: ${theme}`}
-                        >
-                            {getThemeIcon()}
-                        </motion.button>
-
+                    <div className="md:hidden flex items-center">
                         <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
@@ -158,7 +117,7 @@ export default function Navbar({ activeSection, onSectionChange }) {
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => scrollToSection(item.id)}
                                     className={`block w-full text-left px-4 py-3 rounded-lg transition-colors ${activeSection === item.id
-                                            ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium'
+                                            ? 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 font-medium'
                                             : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
                                         }`}
                                 >

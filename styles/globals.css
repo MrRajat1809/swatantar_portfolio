@@ -2,18 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Variables for theming */
+/* CSS Variables for theming - Soft-Scientific Blue Aesthetic */
 :root {
-    --background: 255 255 255;
-    --foreground: 15 23 42;
-    --primary: 59 130 246;
-    --border: 226 232 240;
+    /* Background Palette */
+    --background: 216 234 247; /* #D8EAF7 - Powder Blue */
+    --background-light: 232 244 252; /* #E8F4FC - Lighter top gradient */
+    --background-deep: 189 231 245; /* #BDE7F5 - Aqua turquoise gradient end */
+
+    /* Accent Colors - Isomorphic Labs inspired */
+    --accent-cyan: 0 174 239; /* #00AEEF - Bright cyan */
+    --accent-turquoise: 155 226 235; /* #9BE2EB - Aqua turquoise */
+    --accent-blue: 0 124 184; /* #007CB8 - Medium blue */
+    --accent-navy: 13 27 42; /* #0D1B2A - Navy blue */
+
+    /* Text Colors */
+    --text-primary: 13 27 42; /* #0D1B2A - Navy for headings */
+    --text-secondary: 53 83 107; /* #35536B - Slate gray for descriptions */
+    --text-tertiary: 0 51 78; /* #00334E - Deep blue for secondary UI */
+
+    /* Legacy variables for compatibility */
+    --foreground: 13 27 42;
+    --primary: 0 174 239;
+    --secondary: 0 124 184;
+    --border: 0 0 0 0.05; /* rgba format */
 }
 
 .dark {
     --background: 15 23 42;
     --foreground: 248 250 252;
     --primary: 147 197 253;
+    --secondary: 103 232 249;
     --border: 71 85 105;
 }
 
@@ -24,29 +42,31 @@ html {
 
 body {
     font-feature-settings: "rlig" 1, "calt" 1;
-    background-color: rgb(var(--background));
+    /* Powder blue gradient background */
+    background: linear-gradient(to bottom, rgb(var(--background-light)), rgb(var(--background)), rgb(var(--background-deep)));
     color: rgb(var(--foreground));
+    min-height: 100vh;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Powder blue theme */
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+    background: rgba(216, 234, 247, 0.3);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: #06b6d4;
     border-radius: 4px;
     border: 2px solid transparent;
     background-clip: content-box;
 }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
+        background: #0891b2;
         background-clip: content-box;
     }
 
@@ -60,14 +80,14 @@ body {
         background-clip: content-box;
     }
 
-/* Selection styles */
+/* Selection styles - Powder blue theme */
 ::selection {
-    background: rgba(59, 130, 246, 0.3);
+    background: rgba(6, 182, 212, 0.3);
     color: inherit;
 }
 
 .dark ::selection {
-    background: rgba(147, 197, 253, 0.3);
+    background: rgba(103, 232, 249, 0.3);
 }
 
 /* Focus styles */
@@ -153,6 +173,262 @@ body {
 
 .animate-float {
     animation: float 6s ease-in-out infinite;
+}
+
+/* ============================================
+   PROFESSIONAL HERO BACKGROUND ANIMATIONS
+   Multi-layered, GPU-accelerated animations
+   ============================================ */
+
+/* Layer 1: Base Background - Subtle continuous zoom and drift
+   Duration: 30s for slow, organic movement
+   Uses transform for GPU acceleration */
+@keyframes heroBaseLayer {
+    0%, 100% {
+        transform: scale(1.08) translate(0, 0) translateZ(0);
+    }
+    25% {
+        transform: scale(1.10) translate(25px, -15px) translateZ(0);
+    }
+    50% {
+        transform: scale(1.12) translate(-15px, 25px) translateZ(0);
+    }
+    75% {
+        transform: scale(1.09) translate(20px, 10px) translateZ(0);
+    }
+}
+
+.hero-base-layer {
+    animation: heroBaseLayer 30s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    transform-origin: center center;
+    will-change: transform;
+}
+
+/* Layer 2: Gradient Mesh 1 - Large radial gradient with flowing movement
+   Duration: 25s with position and size animation
+   Creates organic, breathing effect */
+@keyframes gradientMesh1 {
+    0% {
+        background-position: 0% 50%;
+        background-size: 120% 120%;
+        opacity: 0.25;
+    }
+    33% {
+        background-position: 100% 30%;
+        background-size: 150% 150%;
+        opacity: 0.35;
+    }
+    66% {
+        background-position: 50% 100%;
+        background-size: 130% 130%;
+        opacity: 0.30;
+    }
+    100% {
+        background-position: 0% 50%;
+        background-size: 120% 120%;
+        opacity: 0.25;
+    }
+}
+
+.gradient-mesh-1 {
+    animation: gradientMesh1 25s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    will-change: background-position, background-size, opacity;
+}
+
+/* Layer 3: Gradient Mesh 2 - Diagonal flow with rotation effect
+   Duration: 20s for faster, complementary movement
+   Offset timing creates non-repetitive patterns */
+@keyframes gradientMesh2 {
+    0% {
+        background-position: 100% 0%;
+        background-size: 140% 140%;
+        opacity: 0.20;
+        transform: rotate(0deg) translateZ(0);
+    }
+    50% {
+        background-position: 0% 100%;
+        background-size: 180% 180%;
+        opacity: 0.35;
+        transform: rotate(3deg) translateZ(0);
+    }
+    100% {
+        background-position: 100% 0%;
+        background-size: 140% 140%;
+        opacity: 0.20;
+        transform: rotate(0deg) translateZ(0);
+    }
+}
+
+.gradient-mesh-2 {
+    animation: gradientMesh2 20s cubic-bezier(0.83, 0, 0.17, 1) infinite;
+    will-change: background-position, background-size, opacity, transform;
+}
+
+/* Layer 4: Gradient Mesh 3 - Radial pulse with color shift
+   Duration: 28s for unique timing pattern
+   Creates depth with overlapping animations */
+@keyframes gradientMesh3 {
+    0%, 100% {
+        background-position: 50% 50%;
+        background-size: 100% 100%;
+        opacity: 0.15;
+        filter: hue-rotate(0deg) brightness(1);
+    }
+    25% {
+        background-position: 30% 70%;
+        background-size: 160% 160%;
+        opacity: 0.28;
+        filter: hue-rotate(10deg) brightness(1.05);
+    }
+    50% {
+        background-position: 70% 30%;
+        background-size: 120% 120%;
+        opacity: 0.22;
+        filter: hue-rotate(5deg) brightness(0.98);
+    }
+    75% {
+        background-position: 40% 60%;
+        background-size: 150% 150%;
+        opacity: 0.25;
+        filter: hue-rotate(8deg) brightness(1.02);
+    }
+}
+
+.gradient-mesh-3 {
+    animation: gradientMesh3 28s ease-in-out infinite;
+    will-change: background-position, background-size, opacity, filter;
+}
+
+/* Layer 5: Floating Particles - Individual particle animations
+   Staggered durations for organic, non-repetitive movement */
+@keyframes floatParticle1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) translateZ(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.4;
+    }
+    50% {
+        transform: translate(120px, -80px) scale(1.2) translateZ(0);
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes floatParticle2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) translateZ(0);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-100px, 100px) scale(0.8) translateZ(0);
+        opacity: 0.5;
+    }
+    85% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes floatParticle3 {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg) translateZ(0);
+        opacity: 0;
+    }
+    12% {
+        opacity: 0.35;
+    }
+    50% {
+        transform: translate(80px, 120px) rotate(180deg) translateZ(0);
+        opacity: 0.55;
+    }
+    88% {
+        opacity: 0.25;
+    }
+}
+
+@keyframes floatParticle4 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) translateZ(0);
+        opacity: 0;
+    }
+    8% {
+        opacity: 0.25;
+    }
+    50% {
+        transform: translate(-120px, -90px) scale(1.1) translateZ(0);
+        opacity: 0.45;
+    }
+    92% {
+        opacity: 0.2;
+    }
+}
+
+.particle-1 { animation: floatParticle1 35s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.particle-2 { animation: floatParticle2 40s cubic-bezier(0.4, 0, 0.6, 1) infinite 5s; }
+.particle-3 { animation: floatParticle3 32s cubic-bezier(0.4, 0, 0.6, 1) infinite 10s; }
+.particle-4 { animation: floatParticle4 38s cubic-bezier(0.4, 0, 0.6, 1) infinite 15s; }
+
+/* Layer 6: Animated Overlay - Subtle opacity pulsing
+   Duration: 35s for unique pattern against other layers
+   Creates atmospheric depth */
+@keyframes overlayPulse {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    33% {
+        opacity: 0.45;
+    }
+    66% {
+        opacity: 0.35;
+    }
+}
+
+.animated-overlay {
+    animation: overlayPulse 35s ease-in-out infinite;
+    will-change: opacity;
+}
+
+/* Performance optimization: Disable complex animations on mobile
+   Preserves battery and ensures smooth scrolling */
+@media (max-width: 768px) {
+    .hero-base-layer {
+        animation: heroBaseLayer 45s linear infinite;
+    }
+
+    .gradient-mesh-1,
+    .gradient-mesh-2,
+    .gradient-mesh-3 {
+        animation-duration: 40s;
+    }
+
+    /* Hide particles on mobile for better performance */
+    .particle-1,
+    .particle-2,
+    .particle-3,
+    .particle-4 {
+        display: none;
+    }
+}
+
+/* Accessibility: Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .hero-base-layer,
+    .gradient-mesh-1,
+    .gradient-mesh-2,
+    .gradient-mesh-3,
+    .particle-1,
+    .particle-2,
+    .particle-3,
+    .particle-4,
+    .animated-overlay {
+        animation: none !important;
+    }
 }
 
 /* Slower pulse animation */
@@ -298,4 +574,136 @@ body {
         -webkit-background-clip: unset !important;
         background-clip: unset !important;
     }
+}
+
+/* ============================================
+   DESIGN SYSTEM UI UTILITIES
+   Soft-Scientific Blue Aesthetic
+   ============================================ */
+
+/* Card Utilities */
+.card-gradient {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F4FAFD 100%);
+}
+
+.card-shadow {
+    box-shadow: 0 4px 12px rgba(0, 100, 200, 0.08);
+}
+
+.card-shadow-hover {
+    box-shadow: 0 6px 16px rgba(0, 160, 255, 0.15);
+}
+
+/* Button Utilities */
+.btn-primary-gradient {
+    background: linear-gradient(90deg, #00AEEF 0%, #0091D5 100%);
+}
+
+.btn-glow {
+    box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.25);
+}
+
+/* Glass Morphism Utilities */
+.glass-navbar {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Typography Utilities */
+.text-navy {
+    color: #0D1B2A;
+}
+
+.text-slate-gray {
+    color: #35536B;
+}
+
+.text-deep-blue {
+    color: #00334E;
+}
+
+.tracking-scientific {
+    letter-spacing: 0.025em;
+}
+
+/* Accent Glow Effects */
+.accent-glow-cyan {
+    position: relative;
+}
+
+.accent-glow-cyan::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 174, 239, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.accent-glow-cyan:hover::after {
+    opacity: 1;
+}
+
+/* Navbar Scroll Shadow */
+.navbar-shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Tag Background Utilities */
+.tag-analytical {
+    background-color: #B3E5FC;
+}
+
+.tag-research {
+    background-color: #C9DAF8;
+}
+
+.tag-development {
+    background-color: #A9E3FF;
+}
+
+/* Hover Lift Animation */
+.hover-lift {
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+
+.hover-lift:hover {
+    transform: translateY(-3px);
+}
+
+/* Focus Ring - Cyan */
+.focus-ring-cyan:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.25);
+    border-radius: 10px;
+}
+
+/* Gradient Background Utility */
+.bg-powder-gradient {
+    background: linear-gradient(180deg, #D8EAF7 0%, #BDE7F5 100%);
+}
+
+/* Minimal Border */
+.border-minimal {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Soft Shadows */
+.shadow-soft {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-soft-lg {
+    box-shadow: 0 4px 12px rgba(0, 100, 200, 0.08);
 }

@@ -12,6 +12,9 @@ import {
     ExternalLink,
     Network
 } from 'lucide-react';
+import Card, { CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
+import Button from './ui/Button';
+import Tag, { TagGroup } from './ui/Tag';
 
 export default function AboutSection() {
     const containerVariants = {
@@ -83,7 +86,7 @@ export default function AboutSection() {
     ];
 
     return (
-        <section className="py-24 px-4 bg-white dark:bg-gray-900">
+        <section className="py-24 px-4 relative">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -94,7 +97,7 @@ export default function AboutSection() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                        <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-700 bg-clip-text text-transparent">
                             About Me
                         </span>
                     </h2>
@@ -154,19 +157,19 @@ export default function AboutSection() {
                         {/* Achievements */}
                         <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
                             {achievements.map((achievement, index) => (
-                                <motion.div
-                                    key={index}
-                                    whileHover={{ scale: 1.05, y: -5 }}
-                                    className="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl text-center"
-                                >
-                                    <achievement.icon className={`w-8 h-8 ${achievement.color} mx-auto mb-2`} />
-                                    <h5 className="font-bold text-gray-900 dark:text-white mb-1">
-                                        {achievement.title}
-                                    </h5>
-                                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                                        {achievement.description}
-                                    </p>
-                                </motion.div>
+                                <Card key={index} hover={true} className="text-center">
+                                    <CardContent className="py-6 px-3">
+                                        <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.6 }}>
+                                            <achievement.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${achievement.color} mx-auto mb-2`} />
+                                        </motion.div>
+                                        <h5 className="text-sm sm:text-base font-bold text-navy mb-1 tracking-scientific break-words">
+                                            {achievement.title}
+                                        </h5>
+                                        <p className="text-xs sm:text-sm text-slate-gray break-words">
+                                            {achievement.description}
+                                        </p>
+                                    </CardContent>
+                                </Card>
                             ))}
                         </motion.div>
                     </motion.div>
@@ -257,61 +260,58 @@ export default function AboutSection() {
 
                         {/* Skills */}
                         <motion.div variants={itemVariants}>
-                            <h3 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+                            <h3 className="text-3xl font-bold mb-6 text-navy tracking-scientific">
                                 Technical Skills
                             </h3>
                             <div className="space-y-4">
                                 {skills.map((skillGroup, index) => (
-                                    <motion.div
-                                        key={index}
-                                        whileHover={{ scale: 1.02 }}
-                                        className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700"
-                                    >
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <motion.div
-                                                whileHover={{ rotate: 360 }}
-                                                transition={{ duration: 0.6 }}
-                                                className={`p-2 bg-gradient-to-r ${skillGroup.color} rounded-lg`}
-                                            >
-                                                <skillGroup.icon className="w-5 h-5 text-white" />
-                                            </motion.div>
-                                            <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
-                                                {skillGroup.category}
-                                            </h4>
-                                        </div>
-                                        <div className="flex flex-wrap gap-2">
-                                            {skillGroup.items.map((skill, skillIndex) => (
-                                                <motion.span
-                                                    key={skill}
-                                                    initial={{ opacity: 0, scale: 0.8 }}
-                                                    whileInView={{ opacity: 1, scale: 1 }}
-                                                    transition={{ delay: skillIndex * 0.1 }}
-                                                    whileHover={{ scale: 1.1 }}
-                                                    className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md text-sm font-medium"
+                                    <Card key={index} hover={true} accentColor="#00AEEF">
+                                        <CardContent className="p-4 sm:p-6">
+                                            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                                                <motion.div
+                                                    whileHover={{ rotate: 360 }}
+                                                    transition={{ duration: 0.6 }}
+                                                    className={`p-2 bg-gradient-to-r ${skillGroup.color} rounded-lg flex-shrink-0`}
                                                 >
-                                                    {skill}
-                                                </motion.span>
-                                            ))}
-                                        </div>
-                                    </motion.div>
+                                                    <skillGroup.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                                                </motion.div>
+                                                <h4 className="text-base sm:text-lg font-semibold text-navy tracking-scientific break-words">
+                                                    {skillGroup.category}
+                                                </h4>
+                                            </div>
+                                            <TagGroup>
+                                                {skillGroup.items.map((skill, skillIndex) => (
+                                                    <motion.div
+                                                        key={skill}
+                                                        initial={{ opacity: 0, scale: 0.8 }}
+                                                        whileInView={{ opacity: 1, scale: 1 }}
+                                                        transition={{ delay: skillIndex * 0.05 }}
+                                                    >
+                                                        <Tag category="analytical">
+                                                            {skill}
+                                                        </Tag>
+                                                    </motion.div>
+                                                ))}
+                                            </TagGroup>
+                                        </CardContent>
+                                    </Card>
                                 ))}
                             </div>
                         </motion.div>
 
                         {/* CTA */}
                         <motion.div variants={itemVariants} className="pt-6">
-                            <motion.a
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                href="/swatantar_portfolio/resume.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all"
-                            >
-                                <Download size={20} />
-                                <span>Download Full CV</span>
-                                <ExternalLink size={16} />
-                            </motion.a>
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                <Button
+                                    variant="primary"
+                                    href="/swatantar_portfolio/resume.pdf"
+                                    className="inline-flex items-center gap-3"
+                                >
+                                    <Download size={20} />
+                                    <span>Download Full CV</span>
+                                    <ExternalLink size={16} />
+                                </Button>
+                            </motion.div>
                         </motion.div>
                     </motion.div>
                 </div>
