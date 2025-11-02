@@ -10,6 +10,12 @@ export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 
 
     // Load theme from localStorage after component mounts
     useEffect(() => {
+        // If defaultTheme is explicitly set to 'light' or 'dark', don't read from localStorage
+        if (defaultTheme === 'light' || defaultTheme === 'dark') {
+            setMounted(true);
+            return;
+        }
+
         try {
             const storedTheme = localStorage.getItem(storageKey);
             if (storedTheme && ['dark', 'light', 'system'].includes(storedTheme)) {
@@ -20,7 +26,7 @@ export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 
         } finally {
             setMounted(true);
         }
-    }, [storageKey]);
+    }, [storageKey, defaultTheme]);
 
     // Apply theme to document
     useEffect(() => {

@@ -65,7 +65,7 @@ export default function Home() {
 
     return (
         <ErrorBoundary>
-            <ThemeProvider>
+            <ThemeProvider defaultTheme="light">
                 <div className="min-h-screen text-gray-900 dark:text-white relative">
                     {/* Powder blue background with animated cube clusters */}
                     <BackgroundCubes />
