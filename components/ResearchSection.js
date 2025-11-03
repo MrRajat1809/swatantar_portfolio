@@ -470,7 +470,7 @@ export default function ResearchSection() {
                                     <p className="text-slate-gray mb-4 text-sm leading-relaxed tracking-wide">
                                         {area.description}
                                     </p>
-                                    <div className="flex items-center justify-between pt-4 border-t border-minimal">
+                                    <div className="flex items-center justify-between pt-4">
                                         <span className="text-sm font-medium text-slate-gray tracking-scientific">
                                             {area.publications} Publications
                                         </span>

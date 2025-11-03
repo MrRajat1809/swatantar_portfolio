@@ -7,6 +7,7 @@ import SEO from '../components/SEO';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
+import ExperienceSection from '../components/ExperienceSection';
 import ResearchSection from '../components/ResearchSection';
 import AchievementsSection from '../components/AchievementsSection';
 import ContactSection from '../components/ContactSection';
@@ -19,7 +20,7 @@ export default function Home() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ['home', 'about', 'research', 'projects', 'contact'];
+            const sections = ['home', 'about', 'experience', 'research', 'projects', 'contact'];
             const scrollPosition = window.scrollY + 100;
 
             sections.forEach(section => {
@@ -90,6 +91,11 @@ export default function Home() {
                         {/* About Section */}
                         <section id="about">
                             <AboutSection />
+                        </section>
+
+                        {/* Experience Section */}
+                        <section id="experience">
+                            <ExperienceSection />
                         </section>
 
                         {/* Research Section */}
